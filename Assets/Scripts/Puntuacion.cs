@@ -20,7 +20,12 @@ public class Puntuacion : MonoBehaviour
         {
             CerrarJuego();
         }
-    }    
+    }
+    public void RestarPunto()
+    {
+        puntos--;
+        ActualizarTexto();        
+    }
     void ActualizarTexto()
     {
         if (puntuacionText != null)

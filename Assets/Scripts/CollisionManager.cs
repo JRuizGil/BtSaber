@@ -30,6 +30,7 @@ public class CollisionManager : MonoBehaviour
                 if (other.transform.parent != null)
                 {
                     Destroy(other.transform.parent.gameObject); // Destruye el padre si existe
+                    puntuacionScript.RestarPunto();
                 }
                 else
                 {

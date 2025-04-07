@@ -4,7 +4,16 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MenuScene.unity
+    guid: 319dafa5c80f29f428dc1e0d03f04177
+  - enabled: 1
+    path: Assets/Scenes/EasyMode.unity
+    guid: 3f517c46efacb3d4489224022c0919c3
+  - enabled: 1
+    path: Assets/Scenes/HardMode.unity
+    guid: 483d417ef7ed1b84f84a663aadb8c80e
   m_configObjects:
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 40d9cf57eac36da4da4585021950c1de, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 86664db90fe9ee04aae40761bb73b50b, type: 2}
