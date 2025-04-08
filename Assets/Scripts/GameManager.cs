@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,17 +10,34 @@ public class GameManager : MonoBehaviour
     public GameObject left;
     public GameObject right;
     public GameObject top;
+    private static GameManager instance;
     public Transform GameViewPoint;
     public float spawnInterval = 2f;
     public float spawnOffset = -10f;
-    public float speed = 5f;        
+    public float speed = 2f;        
     public float spawnRange = 1f;   
     private List<GameObject> prefabs;
-
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
     void Start()
     {
-        prefabs = new List<GameObject> { Bott, left, right, top };
-        StartCoroutine(SpawnObjects());
+        int escenaActual = SceneManager.GetActiveScene().buildIndex;
+
+        if (escenaActual == 1 || escenaActual == 2)
+        {
+            prefabs = new List<GameObject> { Bott, left, right, top };
+            StartCoroutine(SpawnObjects());
+        }
     }
     IEnumerator SpawnObjects()
     {

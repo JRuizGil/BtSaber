@@ -7,7 +7,7 @@ public class Puntuacion : MonoBehaviour
 {
     public Text puntuacionText;
     private int puntos = 0;
-    private int maxPuntos = 20;
+    public int maxPuntos = 20;
     void Start()
     {
         ActualizarTexto();
