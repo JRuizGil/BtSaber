@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.InputSystem.OSX;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.XR.Management;
+
 
 public class SelectLevel : MonoBehaviour
 {
-    [Header("Nombre o índice del nivel a cargar")]
+    [Header("Nombre o ï¿½ndice del nivel a cargar")]
     public string EasyMode = "EasyMode";
     public string HardMode = "HardMode";
     [SerializeField]private Dropdown Puntos;
@@ -15,21 +17,21 @@ public class SelectLevel : MonoBehaviour
     [SerializeField]private Toggle Dual;
 
     public GameObject ManoIzq;
+    private GameObject Sableizq;
     public GameObject ManoDer;
-
+    private GameObject Sableder;
+    private static SelectLevel instance;
     public GameManager gameManager;
     public Puntuacion Puntuacion;
 
     private void Start()
     {
+        gameManager.enabled = true;
         if (PlayerPrefs.HasKey("MaxPuntos"))
         {
             Puntuacion.maxPuntos = PlayerPrefs.GetInt("MaxPuntos");
         }
-        else
-        {
-            Puntuacion.maxPuntos = 10; // Valor por defecto si no existe
-        }
+        RecoverSable();
     }
     public void CargarNivelFacil()
     {
@@ -42,18 +44,11 @@ public class SelectLevel : MonoBehaviour
             {
                 gm.spawnInterval = 2f;
                 gm.speed = 2f;
-                gm.enabled = true; // Activa el script GameManager
+                gm.enabled = true; 
                 pt.enabled = true;
-                Debug.Log("GameManager activado en EasyMode.");
+                RecoverSable();
+                Debug.Log("GameManager activado en EasyMode.");             
             }
-            else
-            {
-                Debug.LogWarning("No se encontró el componente GameManager en este objeto.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("No se ha asignado un nombre de nivel.");
         }
     }
     public void CargarNivelDificil()
@@ -67,58 +62,52 @@ public class SelectLevel : MonoBehaviour
             {
                 gm.spawnInterval = 1f;
                 gm.speed = 3f;
-                gm.enabled = true; // Activa el script GameManager
+                gm.enabled = true; 
                 pt.enabled = true;
+                RecoverSable();
                 Debug.Log("GameManager activado en EasyMode.");
+                
             }
-            else
-            {
-                Debug.LogWarning("No se encontró el componente GameManager en este objeto.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("No se ha asignado un nombre de nivel.");
         }
     }
     public void ManoDom()
     {
-        int pickedEntryIndexMano = Mano.value;
-
-        GameObject leftHandController = GameObject.Find("Left Controller");
-        GameObject rightHandController = GameObject.Find("Right Controller");
-
-        if (pickedEntryIndexMano == 0)
-        {
-            if (rightHandController != null)
-            {
-                ActivarJerarquia(ManoDer);
-            }
-            if (leftHandController != null)
-            {
-                leftHandController.SetActive(false);
-                Debug.Log("Mando izquierdo desactivado");
-            }
-            PlayerPrefs.SetInt("ManoDom", Mano.value);
-            PlayerPrefs.Save();
-        }
-
+        int pickedEntryIndexMano = Mano.value;        
         if (pickedEntryIndexMano == 1)
         {
-            if (leftHandController != null)
+            Dual.isOn = false;
+            Sableder = ManoDer.transform.Find("XR Controller Right(Clone)").gameObject;
+            Sableizq = ManoIzq.transform.Find("XR Controller Left(Clone)").gameObject;
+            if (Sableder != null)
             {
-                ActivarJerarquia(ManoIzq);
+                Sableder.SetActive(true);
             }
-            if (rightHandController != null)
+            if (Sableizq != null)
             {
-                rightHandController.SetActive(false);
+                Sableizq.SetActive(false);
+                Debug.Log("Mando izquierdo desactivado");
+            }
+            PlayerPrefs.SetInt("ManoDom", 1);
+            PlayerPrefs.Save();
+        }
+        if (pickedEntryIndexMano == 2)
+        {
+            Dual.isOn = false;
+            Sableder = ManoDer.transform.Find("XR Controller Right(Clone)").gameObject;
+            Sableizq = ManoIzq.transform.Find("XR Controller Left(Clone)").gameObject;
+            if (Sableizq != null)
+            {
+                Sableizq.SetActive(true);
+            }
+            if (Sableder != null)
+            {
+                Sableder.SetActive(false);
                 Debug.Log("Mando derecho desactivado");
             }
-            PlayerPrefs.SetInt("ManoDom", Mano.value);
+            PlayerPrefs.SetInt("ManoDom", 2);
             PlayerPrefs.Save();
         }
     }
-
     public void ObtenDropDownValue()
     {
         int pickedEntryIndex = Puntos.value;
@@ -147,45 +136,49 @@ public class SelectLevel : MonoBehaviour
     }
     public void ManoDual(bool togglevalue)
     {
-        GameObject leftHandController = GameObject.Find("Left Controller");
-        GameObject rightHandController = GameObject.Find("Right Controller");
+        Sableder = ManoDer.transform.Find("XR Controller Right(Clone)").gameObject;
+        Sableizq = ManoIzq.transform.Find("XR Controller Left(Clone)").gameObject;
 
         if (Dual.isOn)
         {
-            if (leftHandController != null)
-                ActivarJerarquia(ManoIzq);
-
-            if (rightHandController != null)
-                ActivarJerarquia(ManoDer);
+            Mano.value = 0;
+            PlayerPrefs.SetInt("ManoDom", 0);
+            PlayerPrefs.Save();
+            Sableizq.SetActive(true);
+            Sableder.SetActive(true);
         }
         else
         {
-            if (PlayerPrefs.GetInt("ManoDom") == 0)
-            {
-                if (leftHandController != null && leftHandController.activeSelf)
-                    leftHandController.SetActive(false);
-
-                if (rightHandController != null && !rightHandController.activeSelf)
-                    ActivarJerarquia(ManoDer);
-            }
             if (PlayerPrefs.GetInt("ManoDom") == 1)
             {
-                if (leftHandController != null && !leftHandController.activeSelf)
-                    ActivarJerarquia(ManoIzq);
-
-                if (rightHandController != null && rightHandController.activeSelf)
-                    rightHandController.SetActive(false);
+                Sableizq.SetActive(false);                
+                Sableder.SetActive(true);
+            }
+            if (PlayerPrefs.GetInt("ManoDom") == 2)
+            {                
+                Sableizq.SetActive(true);                
+                Sableder.SetActive(false);
             }
         }
     }
-
-    void ActivarJerarquia(GameObject obj)
+    public void RecoverSable()
     {
-        Transform actual = obj.transform;
-        while (actual != null)
-        {
-            actual.gameObject.SetActive(true);
-            actual = actual.parent;
+        Sableder = ManoDer.transform.Find("XR Controller Right(Clone)").gameObject;
+        Sableizq = ManoIzq.transform.Find("XR Controller Left(Clone)").gameObject;
+        if (PlayerPrefs.GetInt("ManoDom") == 0)
+        {            
+            Sableder.SetActive(true);
+            Sableder.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("ManoDom") == 1)
+        {            
+            Sableder.SetActive(true);
+            Sableder.SetActive(false);
+        }
+        if (PlayerPrefs.GetInt("ManoDom") == 2)
+        {            
+            Sableder.SetActive(false);
+            Sableder.SetActive(true);
         }
     }
 

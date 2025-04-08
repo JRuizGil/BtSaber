@@ -1297,6 +1297,8 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
+    - m_Text: None
+      m_Image: {fileID: 0}
     - m_Text: Diestro
       m_Image: {fileID: 0}
     - m_Text: Zurdo
@@ -4094,10 +4096,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f3cc6f08f176c43b33c65f5131e5aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bott: {fileID: 5646596716155437037, guid: 9ff43a6e85ece654489591706349d538, type: 3}
-  left: {fileID: 5646596716155437037, guid: 1571a507609392b4eac2e09418f6ccf2, type: 3}
-  right: {fileID: 5646596716155437037, guid: 27ae019e2de47c040a0e5749d947dc98, type: 3}
-  top: {fileID: 5646596716155437037, guid: 782accb5ea007604fadd4fefc0993350, type: 3}
+  Bott: {fileID: 5646596716155437037, guid: d6e870b7a3430294d99200935cac4c9d, type: 3}
+  left: {fileID: 5646596716155437037, guid: 9ef47125e5d388347ba222833e550c06, type: 3}
+  right: {fileID: 5646596716155437037, guid: 53c5a86f58f225a438385dbb98a645ba, type: 3}
+  top: {fileID: 5646596716155437037, guid: de2f45ce4ee271e44a0efb943265c736, type: 3}
   GameViewPoint: {fileID: 1694505464}
   spawnInterval: 2
   spawnOffset: -5
@@ -4162,8 +4164,8 @@ MonoBehaviour:
   Puntos: {fileID: 2923970394728245903}
   Mano: {fileID: 483154100}
   Dual: {fileID: 6546457552065514266}
-  ManoIzq: {fileID: 8758423527188247893, guid: 1392f805216c47742996d4742c80721c, type: 3}
-  ManoDer: {fileID: 4283425761326543017, guid: 9f3369e30fbd31f4bb596b1a99babe83, type: 3}
+  ManoIzq: {fileID: 9014170783845293784}
+  ManoDer: {fileID: 9014170785329995303}
   gameManager: {fileID: 1694505463}
   Puntuacion: {fileID: 1694505465}
 --- !u!1 &1740969850
@@ -4852,7 +4854,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Diestro
+  m_Text: None
 --- !u!222 &2125901600
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8634,7 +8636,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7696548426158909434}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9b3d17eeb2e6bc47ada81d8f7f638d8, type: 3}
   m_Name: 
@@ -10025,7 +10027,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!222 &6546457552065514268
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12421,7 +12423,7 @@ MonoBehaviour:
   m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
-  m_ModelPrefab: {fileID: 8270855663187062767, guid: 1392f805216c47742996d4742c80721c, type: 3}
+  m_ModelPrefab: {fileID: 8270855663187062767, guid: f0da0c158e32a0f49a887ab66e5f6830, type: 3}
   m_ModelParent: {fileID: 9014170783845293767}
   m_Model: {fileID: 0}
   m_AnimateModel: 0
@@ -13151,7 +13153,7 @@ MonoBehaviour:
   m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
-  m_ModelPrefab: {fileID: 3475118261464492563, guid: 9f3369e30fbd31f4bb596b1a99babe83, type: 3}
+  m_ModelPrefab: {fileID: 3475118261464492563, guid: 81f80dacff9ff204bb34c91a5342416d, type: 3}
   m_ModelParent: {fileID: 9014170785329995302}
   m_Model: {fileID: 0}
   m_AnimateModel: 0

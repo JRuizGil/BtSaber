@@ -2976,9 +2976,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EasyMode: EasyMode
   HardMode: HardMode
-  Dual: 0
-  Mano: 0
   Puntos: {fileID: 0}
+  Mano: {fileID: 0}
+  Dual: {fileID: 0}
+  ManoIzq: {fileID: 9014170783845293784}
+  ManoDer: {fileID: 9014170785329995303}
   gameManager: {fileID: 1587313315}
   Puntuacion: {fileID: 1587313314}
 --- !u!114 &1587313313
@@ -3020,10 +3022,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f3cc6f08f176c43b33c65f5131e5aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bott: {fileID: 5646596716155437037, guid: 9ff43a6e85ece654489591706349d538, type: 3}
-  left: {fileID: 5646596716155437037, guid: 1571a507609392b4eac2e09418f6ccf2, type: 3}
-  right: {fileID: 5646596716155437037, guid: 27ae019e2de47c040a0e5749d947dc98, type: 3}
-  top: {fileID: 5646596716155437037, guid: 782accb5ea007604fadd4fefc0993350, type: 3}
+  Bott: {fileID: 5646596716155437037, guid: d6e870b7a3430294d99200935cac4c9d, type: 3}
+  left: {fileID: 5646596716155437037, guid: 9ef47125e5d388347ba222833e550c06, type: 3}
+  right: {fileID: 5646596716155437037, guid: 53c5a86f58f225a438385dbb98a645ba, type: 3}
+  top: {fileID: 5646596716155437037, guid: de2f45ce4ee271e44a0efb943265c736, type: 3}
   GameViewPoint: {fileID: 1587313311}
   spawnInterval: 1
   spawnOffset: -5
@@ -16933,7 +16935,7 @@ MonoBehaviour:
   m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
-  m_ModelPrefab: {fileID: 8270855663187062767, guid: 1392f805216c47742996d4742c80721c, type: 3}
+  m_ModelPrefab: {fileID: 8270855663187062767, guid: f0da0c158e32a0f49a887ab66e5f6830, type: 3}
   m_ModelParent: {fileID: 9014170783845293767}
   m_Model: {fileID: 0}
   m_AnimateModel: 0
@@ -17663,7 +17665,7 @@ MonoBehaviour:
   m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
-  m_ModelPrefab: {fileID: 3475118261464492563, guid: 9f3369e30fbd31f4bb596b1a99babe83, type: 3}
+  m_ModelPrefab: {fileID: 3475118261464492563, guid: 81f80dacff9ff204bb34c91a5342416d, type: 3}
   m_ModelParent: {fileID: 9014170785329995302}
   m_Model: {fileID: 0}
   m_AnimateModel: 0

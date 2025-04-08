@@ -22,24 +22,24 @@ public class CollisionManager : MonoBehaviour
 
             if (addPoint != null && puntuacionScript != null)
             {
-                puntuacionScript.AgregarPunto(); // Suma un punto
+                puntuacionScript.AgregarPunto(); 
                 Destroy(other.transform.parent.gameObject);
             }
             else if (notPoint != null)
             {
                 if (other.transform.parent != null)
                 {
-                    Destroy(other.transform.parent.gameObject); // Destruye el padre si existe
+                    Destroy(other.transform.parent.gameObject); 
                     puntuacionScript.RestarPunto();
                 }
                 else
                 {
-                    Destroy(other.gameObject); // Si no tiene padre, destruye solo el objeto
+                    Destroy(other.gameObject); 
                 }
             }
             else
             {
-                Destroy(other.gameObject); // Destruye normalmente si no tiene esos scripts
+                Destroy(other.gameObject); 
             }
 
             Debug.Log("Objeto destruido");

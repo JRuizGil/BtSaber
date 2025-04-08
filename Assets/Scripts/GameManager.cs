@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject right;
     public GameObject top;
     private static GameManager instance;
+    private SelectLevel SelectLevel;
     public Transform GameViewPoint;
     public float spawnInterval = 2f;
     public float spawnOffset = -10f;
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     private List<GameObject> prefabs;
     private void Awake()
     {
+        
         if (instance != null)
         {
             Destroy(gameObject);
